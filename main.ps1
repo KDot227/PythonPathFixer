@@ -16,11 +16,12 @@ function DownloadPython {
     $download_link = "https://www.python.org/ftp/python/$download_ver/python-$download_ver-amd64.exe"
     $python_exe = "$env:TEMP\python-installer.exe"
 
-    Invoke-WebRequest $download_link -OutFile $python_exe -UseBasicParsing
+    #Invoke-WebRequest $download_link -OutFile $python_exe -UseBasicParsing
+    Start-BitsTransfer -Source $download_link -Destination $python_exe
 
     Write-Host "Installing Python. (This may take awhile)"
 
-    Start-Process $python_exe -ArgumentList "/quiet InstallAllUsers=0 PrependPath=1 Include_test=0 Incude_pip=1 Include_doc=0" -Wait
+    Start-Process $python_exe -ArgumentList "/passive InstallAllUsers=0 PrependPath=1 Include_test=0 Incude_pip=1" -Wait
 
     Write-Host "Python downloaded and Installed. Please restart script."
     Read-Host "Press enter to quit"
