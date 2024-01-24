@@ -44,7 +44,7 @@ d8888b. db    db d888888b db   db  .d88b.  d8b   db      d88888b d888888b db    
 88~~~      88       88    88~~~88 88    88 88 V8o88      88~~~      88     .dPYb.  88~~~~~ 88``8b  
 88         88       88    88   88 ``8b  d8' 88  V888      88        .88.   .8P  Y8. 88.     88 ``88.
 88         YP       YP    YP   YP  ``Y88P'  VP   V8P      YP      Y888888P YP    YP Y88888P 88   YD
-
+ 
 Made by KDot227 and Godfather
 "@
     $banner_segments = $banner.Split("`n")
