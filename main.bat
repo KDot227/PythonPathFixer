@@ -9,6 +9,8 @@ powershell -exec Bypass -noprofile -nologo "iex (${%~f0} | out-string)"
 goto :EOF
 #>
 
+$added_to_path = $false
+
 function Main {
     CheckAdmin
     UI
@@ -19,6 +21,13 @@ function Main {
     Add-Python-To-Path
 
     Write-Host "Python seems to be working now!" -ForegroundColor Green
+
+    if ($added_to_path) {
+        Write-Host "Please restart script" -ForegroundColor Green
+        Read-Host "Press enter to quit"
+        exit 0
+    }
+
     Write-Host "Press enter to quit" -ForegroundColor Green -NoNewline
     Read-Host
 }
@@ -138,6 +147,7 @@ function Add-Python-To-Path {
     if ($answer -eq "y" -or $answer -eq "Y") {
         [System.Environment]::SetEnvironmentVariable("Path", $env:Path + ";$new_path;$scripts_path", "User")
         Write-Host "Added python to path" -ForegroundColor Green
+        $added_to_path = $true
     }
 }
 
