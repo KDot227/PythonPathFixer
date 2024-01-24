@@ -44,7 +44,6 @@ d8888b. db    db d888888b db   db  .d88b.  d8b   db      d88888b d888888b db    
 88~~~      88       88    88~~~88 88    88 88 V8o88      88~~~      88     .dPYb.  88~~~~~ 88``8b  
 88         88       88    88   88 ``8b  d8' 88  V888      88        .88.   .8P  Y8. 88.     88 ``88.
 88         YP       YP    YP   YP  ``Y88P'  VP   V8P      YP      Y888888P YP    YP Y88888P 88   YD
- 
 Made by KDot227 and Godfather
 "@
     $banner_segments = $banner.Split("`n")
@@ -136,7 +135,7 @@ function Add-Python-To-Path {
     }
     Backup-Environment-Variables
     $answer = Read-Host "Do you want to add python to path? (y/n) NOTE THIS SHOULD WORK BUT IF IT DOESN'T DON'T KEEP RETRYING OR IT CAN MESSUP ENV VARS"
-    if ($answer) {
+    if ($answer -eq "y" -or $answer -eq "Y") {
         [System.Environment]::SetEnvironmentVariable("Path", $env:Path + ";$new_path;$scripts_path", "User")
         Write-Host "Added python to path" -ForegroundColor Green
     }
